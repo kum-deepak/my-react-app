@@ -1,4 +1,4 @@
-export const books = [
+export const allBooks = [
     {"id":1,"year":1962,"title":"Antelope, four-horned","cover":"http://dummyimage.com/180x240.png/5fa2dd/ffffff","description":"Duis at velit eu est congue elementum. In hac habitasse platea dictumst."},
     {"id":2,"year":1968,"title":"Springbok","cover":"http://dummyimage.com/180x240.png/5fa2dd/ffffff","description":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue."},
     {"id":3,"year":1964,"title":"Coot, red-knobbed","cover":"http://dummyimage.com/180x240.png/cc0000/ffffff","description":"Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo."},
