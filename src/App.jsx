@@ -3,6 +3,10 @@ import { useState } from "react";
 import "./App.css";
 import { allBooks } from "./data/books.js";
 
+const years = [
+  1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971,
+];
+
 function Book({ book }) {
   return (
     <div className="book" key={book.id}>
@@ -16,21 +20,12 @@ function Book({ book }) {
 function YearSelector({ year, setYear, setSelectedBooks }) {
   const onChange = (evt) => {
     let selectedYear = evt.target.value;
-
-    let books;
-    if (selectedYear === "All") {
-      books = allBooks;
-    } else {
+    if (selectedYear !== "All") {
       selectedYear = parseInt(selectedYear);
-      books = allBooks.filter((book) => book.year === selectedYear);
     }
-
     setYear(selectedYear);
-    setSelectedBooks(books);
-    console.log(books.length);
   };
 
-  const years = Array.from({ length: 12 }, (e, i) => 1959 + i);
   const options = years.map((year) => <option key={year}>{year}</option>);
 
   return (
@@ -45,8 +40,14 @@ function YearSelector({ year, setYear, setSelectedBooks }) {
 }
 
 function App() {
-  const [selectedBooks, setSelectedBooks] = useState(allBooks);
   const [year, setYear] = useState("All");
+
+  let selectedBooks;
+  if (year === "All") {
+    selectedBooks = allBooks;
+  } else {
+    selectedBooks = allBooks.filter((book) => book.year === year);
+  }
 
   const bookComponents = selectedBooks.map((book) => <Book book={book}></Book>);
 
@@ -57,11 +58,7 @@ function App() {
         <p>
           Showing {selectedBooks.length} of {allBooks.length}
         </p>
-        <YearSelector
-          year={year}
-          setYear={setYear}
-          setSelectedBooks={setSelectedBooks}
-        />
+        <YearSelector year={year} setYear={setYear} />
       </div>
 
       {bookComponents}
