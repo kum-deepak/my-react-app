@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     minify: false,
+    base: '/my-react-app/',
     outDir: 'docs'
   }
 })
