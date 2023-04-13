@@ -17,7 +17,7 @@ function Book({ book }) {
   );
 }
 
-function YearSelector({ year, setYear, setSelectedBooks }) {
+function YearSelector({ year, setYear }) {
   const onChange = (evt) => {
     let selectedYear = evt.target.value;
     if (selectedYear !== "All") {
