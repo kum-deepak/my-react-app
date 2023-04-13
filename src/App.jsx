@@ -1,4 +1,5 @@
 import { useState } from "react";
+import * as classNames from "classnames";
 
 import "./App.css";
 import { allBooks } from "./data/books.js";
@@ -7,11 +8,11 @@ const years = [
   "All", 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971,
 ];
 
-function Book({ book }) {
+function Book({ book, selectedBook, setSelectedBook }) {
   return (
-    <div className="book">
-      <h3>{book.title} Hello</h3>
-      <img src={`${book.cover}?text=${book.title}`} alt={book.title} />
+    <div className={classNames("book", {selected: selectedBook === book.id})}>
+      <h3>{book.title}</h3>
+      <img src={`${book.cover}?text=${book.title}`} alt={book.title} onClick={() => setSelectedBook(book.id)} />
       <p>Published in {book.year}</p>
     </div>
   );
@@ -40,6 +41,7 @@ function YearSelector({ year, setYear }) {
 
 function App() {
   const [year, setYear] = useState("All");
+  const [selectedBook, setSelectedBook] = useState(null);
 
   let selectedBooks;
   if (year === "All") {
@@ -49,7 +51,7 @@ function App() {
   }
 
   const bookComponents = selectedBooks.map((book) => (
-    <Book book={book} key={book.id}></Book>
+    <Book book={book} key={book.id} selectedBook={selectedBook} setSelectedBook={setSelectedBook}></Book>
   ));
 
   return (

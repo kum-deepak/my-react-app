@@ -16,3 +16,7 @@
   width: 300px;
   display: inline-block;
 }
+
+.book.selected {
+  border: 1px solid red;
+}
